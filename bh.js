@@ -42,7 +42,7 @@ fs.readFile( 'breeds.txt', { encoding:'utf8' }, function( err, data ) {
     console.log( err );
   } else {
     letters = data.toLocaleLowerCase().split( '' ).reduce( countLetters, [] ); 
-    console.log( letters );
+    console.log( letters.join('') );
   }
   
   
