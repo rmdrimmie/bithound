@@ -1,6 +1,18 @@
 fs = require('fs');
 
-
+// http://stackoverflow.com/a/18123883
+var adjustForAccent = function( characterCode ) {
+  var adjustmentTable = {
+    233:101,
+    246:111
+  }
+  
+  if( 'undefined' == typeof( adjustmentTable[characterCode])  ) {
+    throw new Error( "Unmatched extended ASCII value: " + characterCode );
+  }  
+  
+  return adjustmentTable[characterCode];
+}
 
 var countLetters = function( letters, current, index, array ) {
   var letterIndex = current.charCodeAt(0);
@@ -12,7 +24,7 @@ var countLetters = function( letters, current, index, array ) {
     
     if( letterIndex > 122 ) {
       // adjust accented character to base letter
-     
+      letterIndex = adjustForAccent( letterIndex );
     } 
         
     if( isNaN( letters[letterIndex] ) ) {
@@ -30,7 +42,7 @@ fs.readFile( 'breeds.txt', { encoding:'utf8' }, function( err, data ) {
     console.log( err );
   } else {
     letters = data.toLocaleLowerCase().split( '' ).reduce( countLetters, [] ); 
-    //console.log( letters );
+    console.log( letters );
   }
   
   
