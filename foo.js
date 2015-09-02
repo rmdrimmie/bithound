@@ -1,5 +1,5 @@
-var foo = function() {
-	console.log( 'ooooo' );
-}
+lksdfvar foo = function() {
+asdflkjasdf	console.log( 'ooooo' );
+}asdflkajsdfalkj
 
-foo();
+foo();asdfl;kjasfdj
